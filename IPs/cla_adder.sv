@@ -37,6 +37,7 @@ module cla_4_bits_module (
     wire [3:0] ands;
     wire [3:0] xors;
     wire [4:0] carries;
+    wire [3:0] partial_carries;
 
     assign carries[0] = carry_in;
     assign carry_out = carries[4];
@@ -53,17 +54,17 @@ module cla_4_bits_module (
     endgenerate
 
     assign carries[1] = ands[0] | 
-        (carries[0] & carries[1]);
+        (carries[0] & xors[0]);
     assign carries[2] = ands[1] | 
-        (carries[1] & carries[2]) | 
-        (carries[0] & carries[1] & carries[2]);
+        (ands[0] & xors[1]) | 
+        (carries[0] & xors[0] & xors[1]);
     assign carries[3] = ands[2] | 
-        (carries[2] & carries[3]) | 
-        (carries[1] & carries[2] & carries[3]) |
-        (carries[0] & carries[1] & carries[2] & carries[3]);
+        (ands[1] & xors[2]) | 
+        (ands[0] & xors[1] & xors[2]) |
+        (carries[0] & xors[1] & xors[2] & xors[3]);
     assign carries[4] = ands[3] | 
-        (carries[3] & carries[4]) | 
-        (carries[2] & carries[3] & carries[4]) |
-        (carries[1] & carries[2] & carries[3] & carries[4]) | 
-        (carries[0] & carries[1] & carries[2] & carries[3] & carries[4]);
+        (ands[2] & xors[3]) | 
+        (ands[1] & xors[2] & xors[3]) |
+        (ands[0] & xors[1] & xors[2] & xors[3]) | 
+        (carries[0] & xors[0] & xors[1] & xors[2] & xors[3]);
 endmodule

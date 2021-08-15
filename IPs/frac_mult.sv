@@ -17,18 +17,18 @@ module fractionned_multiplier (
     output logic output_valid
 );
 
-    logic [4:0] index = 8'b0;
+    logic [6:0] index = 6'b0;
 
     logic [63:0] accumulator =  64'b0;
     logic [31:0] temp =         32'b0;
     wire [63:0] extended_temp;
 
     assign output_lower = accumulator[31:0];
-    assign output_higher = accumulator[64:0];
+    assign output_higher = accumulator[64:32];
 
     shift_expander expander (
         temp,
-        index,
+        index - 6'b1,
         extended_temp
     );
 
@@ -56,14 +56,28 @@ module fractionned_multiplier (
         void_wire
     );
 
+    initial begin
+        output_valid = 0;
+    end
+
     always @(posedge (clock & ~enable)) begin
         index = 0;
     end
 
-    always @(posedge (clock & enable)) begin
-        accumulator = adder_output;
+    always @(posedge (clock & enable & ~output_valid)) begin
         temp = {32{input_a[index]}} & input_b;
-        index = index + 1; // Replace by custom adder ?
+
+        accumulator = adder_output;
+        
+        index = index + 1;
+        if (index == 33) 
+        begin
+            output_valid = 1;
+        end
+    end
+
+    always @(posedge (clock & ~enable & output_valid)) begin
+        output_valid = 0;
     end
 
 endmodule
