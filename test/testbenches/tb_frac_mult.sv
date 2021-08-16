@@ -1,4 +1,4 @@
-`include "frac_mult.sv"
+`include "../../IPs/frac_mult.sv"
 
 `timescale 1 ns/10 ps
 module fractionned_multiplier_tb;

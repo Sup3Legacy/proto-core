@@ -1,8 +1,8 @@
-`include "div.sv"
+`include "../../IPs/div.sv"
 
 module divider_tb;
 
-    // Parameters
+    // Paramet, divider_duters
   
     // Ports
     reg [31:0] input_a;
