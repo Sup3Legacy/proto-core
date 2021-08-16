@@ -21,9 +21,7 @@ module shift_expander_tb;
     begin
         $dumpfile("shift_expander.vcd");
         $dumpvars(0, shift_expander_dut);
-        $dumpvars(0, input_a);
-        $dumpvars(1, shift_index);
-        $dumpvars(3, output_b);
+
     end
   
     always

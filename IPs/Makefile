@@ -6,6 +6,10 @@ shift:
 	iverilog ./tb_shift_expander.sv -o shift_expander.o
 	vvp ./shift_expander.o
 
+div:
+	iverilog ./tb_div.sv -o div.o
+	vvp ./div.o
+
 mult_gtk: mult
 	gtkwave ./frac_mult.vcd
 
