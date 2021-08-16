@@ -13,13 +13,14 @@ module shift_expander_tb;
     shift_expander 
     shift_expander_dut (
       .input_a (input_a ),
-      .shift_index (shift_index[5:0] ),
+      .shift_index (shift_index ),
       .output_b  ( output_b)
     );
   
     initial
     begin
         $dumpfile("shift_expander.vcd");
+        $dumpvars(0, shift_expander_dut);
         $dumpvars(0, input_a);
         $dumpvars(1, shift_index);
         $dumpvars(3, output_b);

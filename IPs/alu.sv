@@ -1,6 +1,6 @@
 `include "./cla_adder.sv"
 
-module ALU (
+module alu (
     input [31:0]  input_a,
     input [31:0]  input_b,
     input [3:0]   opcode,
