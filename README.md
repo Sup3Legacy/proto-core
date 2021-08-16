@@ -9,8 +9,8 @@ The targeted RISC-V flavor is RV32IMA (maybe extensible to RV32G).
 - Core:
     - [X] (fast) adder : carry look-ahead
     - [ ] ALU
-    - [X] Multiplication
-    - [ ] Division
+    - [X] Multiplication *not properly tested*
+    - [X] Division *not properly tested*
     - [ ] MD unit
     - [ ] Logic 
     - [ ] 5 staged-pipeline
