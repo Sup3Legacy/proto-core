@@ -32,7 +32,7 @@ module fractionned_multiplier (
         extended_temp
     );
 
-    wire [64:0] adder_output;
+    wire [63:0] adder_output;
     wire adder_carry;
 
     logic cst1 = 0;

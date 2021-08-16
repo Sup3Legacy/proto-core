@@ -34,13 +34,7 @@ module fractionned_multiplier_tb;
     initial
     begin
         $dumpfile("frac_mult.vcd");
-        $dumpvars(0, input_a);
-        $dumpvars(1, input_b);
-        $dumpvars(3, clock);
-        $dumpvars(4, output_lower);
-        $dumpvars(5, output_higher);
-        $dumpvars(6, output_valid);
-        $dumpvars(6, period);
+        $dumpvars(0, fractionned_multiplier_dut);
     end
 
     always
