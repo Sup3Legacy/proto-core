@@ -1,4 +1,4 @@
-`include "../../IPs/shift_expander.sv"
+`include "../IPs/shift_expander.sv"
 
 `timescale 1 ns/10 ps
 module shift_expander_tb;

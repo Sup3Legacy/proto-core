@@ -1,4 +1,4 @@
-`include "../../IPs/frac_mult.sv"
+`include "../IPs/frac_mult.sv"
 
 `timescale 1 ns/10 ps
 module fractionned_multiplier_tb;
@@ -15,7 +15,6 @@ module fractionned_multiplier_tb;
     wire [31:0] output_lower;
     wire [31:0] output_higher;
     wire output_valid;
-
     logic [15:0] period = 0;
   
     fractionned_multiplier 

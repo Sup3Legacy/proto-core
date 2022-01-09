@@ -1,6 +1,6 @@
 module shift_expander(
     input wire [31:0] input_a,
-    input wire [6:0] shift_index,
+    input wire [7:0] shift_index,
 
     output wire [63:0] output_b
 );

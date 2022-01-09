@@ -1,5 +1,5 @@
-`include "cla_adder.sv"
-`include "shift_expander.sv"
+`include "../IPs/cla_adder.sv"
+`include "../IPs/shift_expander.sv"
 
 module fractionned_multiplier (
     input wire [31:0] input_a,
@@ -17,7 +17,7 @@ module fractionned_multiplier (
     output logic output_valid
 );
 
-    logic [6:0] index = 6'b0;
+    logic [7:0] index = 8'b0;
 
     logic [63:0] accumulator =  64'b0;
     logic [31:0] temp =         32'b0;
@@ -28,7 +28,7 @@ module fractionned_multiplier (
 
     shift_expander expander (
         temp,
-        index - 6'b1,
+        index - 8'b1,
         extended_temp
     );
 
@@ -70,7 +70,7 @@ module fractionned_multiplier (
         accumulator = adder_output;
         
         index = index + 1;
-        if (index == 33) 
+        if (index == 32) 
         begin
             output_valid = 1;
         end
@@ -78,6 +78,7 @@ module fractionned_multiplier (
 
     always @(posedge (clock & ~enable & output_valid)) begin
         output_valid = 0;
+        index = 0;
     end
 
 endmodule

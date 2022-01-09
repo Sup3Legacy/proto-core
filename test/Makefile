@@ -3,7 +3,7 @@ mult:
 	vvp ./frac_mult.o
 
 shift:
-	iverilog ./tb_shift_expander.sv -o shift_expander.o
+	iverilog tb_shift_expander.sv -o shift_expander.o
 	vvp ./shift_expander.o
 
 div:

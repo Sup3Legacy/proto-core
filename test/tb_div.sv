@@ -1,4 +1,4 @@
-`include "../../IPs/div.sv"
+`include "../IPs/div.sv"
 
 module divider_tb;
 
