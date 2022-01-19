@@ -21,14 +21,11 @@ module register_file (
         end
     end
 
-    /*
-        TODO : add out-of-bounds detection (if necessary) and interruption output
-    */
     assign read_data_1 = REGS[read_register_1];
     assign read_data_2 = REGS[read_register_2];
 
     always @(posedge clock) begin
-        if (write_enable) begin
+        if (write_enable && (write_register != 0)) begin
             REGS[write_register] = write_data;
         end
     end

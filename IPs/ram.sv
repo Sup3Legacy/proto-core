@@ -1,4 +1,4 @@
-module moduleName #(
+module RAM_File #(
     parameter ram_size = 32000
 ) (
     input wire [31:0] read_address,
